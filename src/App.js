@@ -7,7 +7,6 @@ function App() {
   const [operator, setOperator] = useState('');
   const [resetInput, setResetInput] = useState(false);
 
-  // Función para agregar números
   const handleNumberClick = (number) => {
     if (input === '0' || resetInput) {
       setInput(number);
@@ -17,14 +16,12 @@ function App() {
     }
   };
 
-  // Función para agregar punto decimal
   const handleDecimalClick = () => {
     if (!input.includes('.')) {
       setInput(input + '.');
     }
   };
 
-  // Función para manejar operadores
   const handleOperatorClick = (op) => {
     if (operator && previousInput && !resetInput) {
       calculate();
@@ -34,7 +31,6 @@ function App() {
     setResetInput(true);
   };
 
-  // Función para calcular resultado
   const calculate = () => {
     let result = 0;
     const prev = parseFloat(previousInput);
@@ -59,7 +55,6 @@ function App() {
         return;
     }
 
-    // Redondear a 2 decimales si es necesario
     result = Math.round(result * 100) / 100;
 
     setInput(result.toString());
@@ -68,14 +63,12 @@ function App() {
     setResetInput(true);
   };
 
-  // Función para borrar todo
   const handleClear = () => {
     setInput('0');
     setPreviousInput('');
     setOperator('');
   };
 
-  // Función para borrar último dígito
   const handleBackspace = () => {
     if (input.length > 1) {
       setInput(input.slice(0, -1));
@@ -84,7 +77,6 @@ function App() {
     }
   };
 
-  // Función para cambiar signo
   const handleToggleSign = () => {
     if (input !== '0') {
       if (input.startsWith('-')) {
